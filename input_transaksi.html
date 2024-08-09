@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Transaksi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <img src="gambar/2.jpeg" alt="header" width="400" height="200">
+    </header>
+    <nav style="background-color: rgb(40, 40, 94); text-align: center;">
+        <ul>
+            <li style="margin: 10px;"><a href="index.html">Home</a></li>
+            <li style="margin: 10px;"><a href="produk.html">Produk</a></li>
+            <li style="margin: 10px;"><a href="kontak_kami.html">Kontak Kami</a></li>
+        </ul>
+    </nav>
+
+    <table width="100%" align="center" style="margin-top: 10px; margin-bottom: 10px;">
+        <tr>      
+            <!-- Konten Utama -->
+            <td width="100%" valign="top" align="center" style="text-align: center; padding: 10px;">
+                <h2>Transaksi Pembelian Anda</h2>
+                <form action="struk_invoice.php" method="post">
+                    <hr>
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama"><br><br>
+                    <label for="telepon">Telepon:</label>
+                    <input type="tel" id="telepon" name="telepon"><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="alamat">Alamat:</label>
+                    <input type="text" id="alamat" name="alamat"><br><br>
+                    <label for="produk">Produk:</label>
+                    <select id="produk" name="produk" style="width: 180px;">
+                        <option value="produk1">Produk 1</option>
+                        <option value="produk2">Produk 2</option>
+                    </select><br><br>
+                    <label for="jumlah">Jumlah:</label>
+                    <input type="number" id="jumlah" name="jumlah"><br><br>
+                    <label for="harga">Harga:</label>
+                    <input type="number" id="harga" name="harga" readonly><br><br>
+                    <hr>
+                    <input type="submit" value="Checkout">
+                </form>
+            </td>
+      </tr>
+    </table>
+    <script>
+    document.getElementById('jumlah').addEventListener('input', function() {
+        let jumlah = document.getElementById('jumlah').value;
+        let harga = document.getElementById('harga');
+    
+        if (jumlah > 0) {
+            // Harga produk 1
+            if (document.getElementById('produk').value === 'produk1') {
+                harga.value = jumlah * 87000; // Contoh harga produk 1
+            }
+            // Harga produk 2
+            else if (document.getElementById('produk').value === 'produk2') {
+                harga.value = jumlah * 54000; // Contoh harga produk 2
+            }
+        } else {
+            harga.value = '';
+        }
+    });
+</script>
+    <footer>
+        <p>&copy; 2024 Rani Shop</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
